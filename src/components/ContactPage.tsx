@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  HiEnvelope as Mail, 
-  HiPhone as Phone, 
+import {
+  HiEnvelope as Mail,
+  HiPhone as Phone,
   HiMapPin as MapPin,
   HiChatBubbleLeftRight as MessageSquare,
   HiGlobeAlt as Globe,
   HiArrowRight as ArrowRight,
   HiCheckCircle as CheckCircle
 } from 'react-icons/hi2';
+import {
+  FaLinkedin as Linkedin,
+  FaXTwitter as Twitter,
+  FaGithub as Github,
+  FaInstagram as Instagram,
+  FaFacebook as Facebook,
+  FaYoutube as Youtube
+} from 'react-icons/fa6';
 import { useLanguage } from '../context/LanguageContext';
 import { TypingAnimation } from './TypingAnimation';
 import { PremiumButton } from './PremiumButton';
@@ -122,7 +130,7 @@ const ContactPage = () => {
               ))}
 
               {/* Social Links */}
-              <motion.div 
+              <motion.div
                 whileInView={{ opacity: 1, y: 0 }}
                 initial={{ opacity: 0, y: 20 }}
                 viewport={{ once: false }}
@@ -130,11 +138,27 @@ const ContactPage = () => {
                 className="glass-card p-8 border-white/5"
               >
                 <h3 className="text-sm font-bold text-white/40 uppercase tracking-widest mb-6">Follow Our Journey</h3>
-                <div className="flex gap-4">
-                  {['Twitter', 'LinkedIn', 'GitHub'].map((social) => (
-                    <button key={social} className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-brand-teal hover:bg-brand-teal/10 transition-all">
-                      <Globe className="w-5 h-5" />
-                    </button>
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    { icon: Linkedin, href: "https://www.linkedin.com/company/desknet", label: "LinkedIn", color: "hover:text-blue-500" },
+                    { icon: Twitter, href: "https://twitter.com/desknet", label: "Twitter", color: "hover:text-slate-100" },
+                    { icon: Github, href: "https://github.com/desknet", label: "GitHub", color: "hover:text-slate-200" },
+                    { icon: Instagram, href: "https://instagram.com/desknet", label: "Instagram", color: "hover:text-pink-500" },
+                    { icon: Facebook, href: "https://facebook.com/desknet", label: "Facebook", color: "hover:text-blue-600" },
+                    { icon: Youtube, href: "https://youtube.com/@desknet", label: "YouTube", color: "hover:text-red-500" }
+                  ].map((social) => (
+                    <motion.a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`w-full aspect-square rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:bg-brand-teal/10 transition-all border border-white/10 hover:border-brand-teal/50 ${social.color}`}
+                      aria-label={social.label}
+                    >
+                      <social.icon className="w-5 h-5" />
+                    </motion.a>
                   ))}
                 </div>
               </motion.div>

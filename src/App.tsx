@@ -44,10 +44,15 @@ import {
   HiEyeSlash as EyeOff,
   HiMagnifyingGlass as Search
 } from "react-icons/hi2";
-import { 
-  FaWhatsapp as Whatsapp, 
+import {
+  FaWhatsapp as Whatsapp,
   FaLinkedin as Linkedin,
   FaFacebook as Facebook,
+  FaXTwitter as Twitter,
+  FaInstagram as Instagram,
+  FaYoutube as Youtube,
+  FaGithub as Github,
+  FaTelegram as Telegram,
   FaAmazon,
   FaMicrosoft
 } from "react-icons/fa6";
@@ -1965,16 +1970,23 @@ const Footer = ({ setCurrentPage, onLegalClick }: { setCurrentPage: (page: strin
 
             <div className="flex flex-wrap gap-4">
               {[
-                { icon: Whatsapp, href: "#", label: "WhatsApp" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Facebook, href: "#", label: "Facebook" }
+                { icon: Whatsapp, href: "https://wa.me/message/YOUR_WHATSAPP_NUMBER", label: "WhatsApp", color: "hover:text-emerald-500 hover:border-emerald-500/50 hover:bg-emerald-500/10" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/desknet", label: "LinkedIn", color: "hover:text-blue-500 hover:border-blue-500/50 hover:bg-blue-500/10" },
+                { icon: Twitter, href: "https://twitter.com/desknet", label: "Twitter", color: "hover:text-slate-100 hover:border-slate-100/50 hover:bg-slate-100/10" },
+                { icon: Instagram, href: "https://instagram.com/desknet", label: "Instagram", color: "hover:text-pink-500 hover:border-pink-500/50 hover:bg-pink-500/10" },
+                { icon: Facebook, href: "https://facebook.com/desknet", label: "Facebook", color: "hover:text-blue-600 hover:border-blue-600/50 hover:bg-blue-600/10" },
+                { icon: Youtube, href: "https://youtube.com/@desknet", label: "YouTube", color: "hover:text-red-500 hover:border-red-500/50 hover:bg-red-500/10" },
+                { icon: Telegram, href: "https://t.me/desknet", label: "Telegram", color: "hover:text-sky-500 hover:border-sky-500/50 hover:bg-sky-500/10" },
+                { icon: Github, href: "https://github.com/desknet", label: "GitHub", color: "hover:text-slate-200 hover:border-slate-200/50 hover:bg-slate-200/10" }
               ].map((social, i) => (
                 <motion.a
                   key={i}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ y: -5, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-brand-teal hover:border-brand-teal/50 hover:bg-brand-teal/10 transition-all duration-300 group"
+                  className={`w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 transition-all duration-300 group ${social.color}`}
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5 group-hover:drop-shadow-[0_0_8px_rgba(45,212,191,0.5)]" />
